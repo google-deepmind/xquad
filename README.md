@@ -1,4 +1,4 @@
-This directory contains the Cross-lingual Question Answering Dataset (XQuAD), described in the following paper:
+This directory contains the Cross-lingual Question Answering Dataset (XQuAD), described in the following paper (https://arxiv.org/abs/1910.11856):
 
 Mikel Artetxe, Sebastian Ruder, and Dani Yogatama. (2019). On the cross-lingual transferability of monolingual representations. arXiv 1910.11856.
 
@@ -12,17 +12,17 @@ Pranav Rajpurkar, Jian Zhang, Konstantin Lopyrev, and Percy Liang. (2016). SQuAD
 The original SQuAD 1.1 dataset can be downloaded from https://github.com/rajpurkar/SQuAD-explorer/tree/master/dataset
 
 This directory contains the following files:
-Arabic: xquad.ar.json
-German: xquad.de.json
-Greek: xquad.el.json
-English: xquad.en.json
-Spanish: xquad.es.json
-Hindi: xquad.hi.json
-Russian: xquad.ru.json
-Thai: xquad.th.json
-Turkish: xquad.tr.json
-Vietnamese: xquad.vi.json
-Chinese: xquad.zh.json
+- Arabic: xquad.ar.json
+- German: xquad.de.json
+- Greek: xquad.el.json
+- English: xquad.en.json
+- Spanish: xquad.es.json
+- Hindi: xquad.hi.json
+- Russian: xquad.ru.json
+- Thai: xquad.th.json
+- Turkish: xquad.tr.json
+- Vietnamese: xquad.vi.json
+- Chinese: xquad.zh.json
 
 This dataset is distributed under the CC BY-SA 4.0 license (https://creativecommons.org/licenses/by-sa/4.0/legalcode).
 
