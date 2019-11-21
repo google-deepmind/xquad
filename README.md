@@ -27,3 +27,15 @@ This directory contains the following files:
 This dataset is distributed under the CC BY-SA 4.0 license (https://creativecommons.org/licenses/by-sa/4.0/legalcode).
 
 This is not an officially supported Google product.
+
+If you use this dataset, please cite:
+
+@article{Artetxe:etal:2019,
+      author    = {Mikel Artetxe and Sebastian Ruder and Dani Yogatama},
+      title     = {On the cross-lingual transferability of monolingual representations},
+      journal   = {CoRR},
+      volume    = {abs/1910.11856},
+      year      = {2019},
+      archivePrefix = {arXiv},
+      eprint    = {1910.11856}
+}
