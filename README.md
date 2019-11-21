@@ -30,6 +30,7 @@ This is not an officially supported Google product.
 
 If you use this dataset, please cite:
 
+```
 @article{Artetxe:etal:2019,
       author    = {Mikel Artetxe and Sebastian Ruder and Dani Yogatama},
       title     = {On the cross-lingual transferability of monolingual representations},
@@ -39,3 +40,4 @@ If you use this dataset, please cite:
       archivePrefix = {arXiv},
       eprint    = {1910.11856}
 }
+```
