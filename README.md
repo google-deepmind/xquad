@@ -4,14 +4,16 @@ XQuAD (Cross-lingual Question Answering Dataset) is a benchmark dataset for eval
 The dataset consists of a subset of 240 paragraphs and 1190 question-answer pairs from
 the development set of SQuAD v1.1 [(Rajpurkar et al., 2016)](https://www.aclweb.org/anthology/D16-1264/) together with their professional
 translations into ten languages: Spanish, German, Greek, Russian, Turkish, Arabic, Vietnamese, Thai, Chinese, and Hindi.
-Consequently, the dataset is _entirely parallel_.
+Consequently, the dataset is _entirely parallel_ across 11 languages.
 
 For more information on how the dataset was created, refer to our paper,
 [On the Cross-lingual Transferability of Monolingual Representations](https://arxiv.org/abs/1910.11856).
 
-All files are in json format following the SQuAD dataset format. 
+All files are in json format following the SQuAD dataset format. A parallel example in XQuAD in
+English, Spanish, and Chinese can be seen in the image below. The full dataset consists of 240
+such parallel instances in 11 languages.
 
-![An example][xquad_example.png]
+![An example from XQuAD](xquad_example.png)
 
 ## Data
 
@@ -56,17 +58,32 @@ which is why we use the English SQuAD v1.1 evaluation script for convenience.
 
 ## Baselines
 
-We show results with baseline methods in the table below. For translate-train, 
-we fine-tune mBERT on the SQuAD v1.1 training data, which has been automatically translated
-to the target language. For translate-test, we fine-tune BERT-Large on the SQuAD v1.1 training set
-and evaluate it on the XQuAD test set of the target language, which has been automatically translated to English.
+We show results using baseline methods in the tables below. We directly fine-tune [mBERT](https://github.com/google-research/bert/blob/master/multilingual.md)
+and [XLM-R Large](https://arxiv.org/abs/1911.02116) on the English SQuAD v1.1 training data
+and evaluate them via zero-shot transfer on the XQuAD test datasets. For translate-train, 
+we fine-tune mBERT on the SQuAD v1.1 training data, which we automatically translate
+to the target language. For translate-test, we fine-tune [BERT-Large](https://arxiv.org/abs/1810.04805)
+on the SQuAD v1.1 training set and evaluate it on the XQuAD test set of the target language,
+which we automatically translate to English. Note that results with translate-test are not directly
+comparable as we drop a small number (less than 3%) of the test examples.
 
-| Model                 |      en     |      ar     |      de     |      el     |      es     |      hi     |      ru     |      th     |      tr     |      vi     |      zh     |     avg     |
-|-----------------------|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|
-| mBERT                 | 83.5 / 72.2 | 61.5 / 45.1 | 70.6 / 54.0 | 62.6 / 44.9 | 75.5 / 56.9 | 59.2 / 46.0 | 71.3 / 53.3 | 42.7 / 33.5 | 55.4 / 40.1 | 69.5 / 49.6 | 58.0 / 48.3 | 64.5 / 49.4 |
-| XLM-R                 | 86.5 / 75.7 | 68.6 / 49.0 | 80.4 / 63.4 | 79.8 / 61.7 | 82.0 / 63.9 | 76.7 / 59.7 | 80.1 / 64.3 | 74.2 / 62.8 | 75.9 / 59.3 | 79.1 / 59.0 | 59.3 / 50.0 | 76.6 / 60.8 |
-| Translate-train mBERT | 83.5 / 72.2 | 68.0 / 51.1 | 75.6 / 60.7 | 70.0 / 53.0 | 80.2 / 63.1 | 69.6 / 55.4 | 75.0 / 59.7 | 36.9 / 33.5 | 68.9 / 54.8 | 75.6 / 56.2 | 66.2 / 56.6 | 70.0 / 56.0 |
-| Translate-test BERT-L | 87.9 / 77.1 | 73.7 / 58.8 | 79.8 / 66.7 | 79.4 / 65.5 | 82.0 / 68.4 | 74.9 / 60.1 | 79.9 / 66.7 | 64.6 / 50.0 | 67.4 / 49.6 | 76.3 / 61.5 | 73.7 / 59.1 | 76.3 / 62.1 |
+F1 scores:
+
+| Model                 | en   | ar   | de   | el   | es   | hi   | ru   | th   | tr   | vi   | zh   | avg  |
+|-----------------------|------|------|------|------|------|------|------|------|------|------|------|------|
+| mBERT                 | 83.5 | 61.5 | 70.6 | 62.6 | 75.5 | 59.2 | 71.3 | 42.7 | 55.4 | 69.5 | 58.0 | 64.5 |
+| XLM-R Large           | 86.5 | 68.6 | 80.4 | 79.8 | 82.0 | 76.7 | 80.1 | 74.2 | 75.9 | 79.1 | 59.3 | 76.6 |
+| Translate-train mBERT | 83.5 | 68.0 | 75.6 | 70.0 | 80.2 | 69.6 | 75.0 | 36.9 | 68.9 | 75.6 | 66.2 | 70.0 |
+| Translate-test BERT-L | 87.9 | 73.7 | 79.8 | 79.4 | 82.0 | 74.9 | 79.9 | 64.6 | 67.4 | 76.3 | 73.7 | 76.3 |
+
+EM scores:
+
+| Model                 | en   | ar   | de   | el   | es   | hi   | ru   | th   | tr   | vi   | zh   | avg  |
+|-----------------------|------|------|------|------|------|------|------|------|------|------|------|------|
+| mBERT                 | 72.2 | 45.1 | 54.0 | 44.9 | 56.9 | 46.0 | 53.3 | 33.5 | 40.1 | 49.6 | 48.3 | 49.4 |
+| XLM-R Large           | 75.7 | 49.0 | 63.4 | 61.7 | 63.9 | 59.7 | 64.3 | 62.8 | 59.3 | 59.0 | 50.0 | 60.8 |
+| Translate-train mBERT | 72.2 | 51.1 | 60.7 | 53.0 | 63.1 | 55.4 | 59.7 | 33.5 | 54.8 | 56.2 | 56.6 | 56.0 |
+| Translate-test BERT-L | 77.1 | 58.8 | 66.7 | 65.5 | 68.4 | 60.1 | 66.7 | 50.0 | 49.6 | 61.5 | 59.1 | 62.1 |
 
 ## Best practices
 
