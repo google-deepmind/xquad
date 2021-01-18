@@ -13,6 +13,8 @@ All files are in json format following the SQuAD dataset format. A parallel exam
 English, Spanish, and Chinese can be seen in the image below. The full dataset consists of 240
 such parallel instances in 11 languages.
 
+__Update__: Added SQuAD v1.1 professionally translated to Romanian.
+
 ![An example from XQuAD](xquad_example.png)
 
 ## Data
@@ -29,6 +31,7 @@ This directory contains files in the following languages:
 - Turkish: `xquad.tr.json`
 - Vietnamese: `xquad.vi.json`
 - Chinese: `xquad.zh.json`
+- Romanian: `xquad.ro.json` (newly added; not included in the original XQuAD)
 
 As the dataset is based on SQuAD v1.1, there are no unanswerable questions in the data. We chose this
 setting so that models can focus on cross-lingual transfer.
@@ -69,21 +72,21 @@ comparable as we drop a small number (less than 3%) of the test examples.
 
 F1 scores:
 
-| Model                 | en   | ar   | de   | el   | es   | hi   | ru   | th   | tr   | vi   | zh   | avg  |
-|-----------------------|------|------|------|------|------|------|------|------|------|------|------|------|
-| mBERT                 | 83.5 | 61.5 | 70.6 | 62.6 | 75.5 | 59.2 | 71.3 | 42.7 | 55.4 | 69.5 | 58.0 | 64.5 |
-| XLM-R Large           | 86.5 | 68.6 | 80.4 | 79.8 | 82.0 | 76.7 | 80.1 | 74.2 | 75.9 | 79.1 | 59.3 | 76.6 |
-| Translate-train mBERT | 83.5 | 68.0 | 75.6 | 70.0 | 80.2 | 69.6 | 75.0 | 36.9 | 68.9 | 75.6 | 66.2 | 70.0 |
-| Translate-test BERT-L | 87.9 | 73.7 | 79.8 | 79.4 | 82.0 | 74.9 | 79.9 | 64.6 | 67.4 | 76.3 | 73.7 | 76.3 |
+| Model                 | en   | ar   | de   | el   | es   | hi   | ru   | th   | tr   | vi   | zh   | ro   | avg  |
+|-----------------------|------|------|------|------|------|------|------|------|------|------|------|------|------|
+| mBERT                 | 83.5 | 61.5 | 70.6 | 62.6 | 75.5 | 59.2 | 71.3 | 42.7 | 55.4 | 69.5 | 58.0 | 72.7 | 65.2 |
+| XLM-R Large           | 86.5 | 68.6 | 80.4 | 79.8 | 82.0 | 76.7 | 80.1 | 74.2 | 75.9 | 79.1 | 59.3 | 83.6 | 77.2 |
+| Translate-train mBERT | 83.5 | 68.0 | 75.6 | 70.0 | 80.2 | 69.6 | 75.0 | 36.9 | 68.9 | 75.6 | 66.2 | -    | 70.0 |
+| Translate-test BERT-L | 87.9 | 73.7 | 79.8 | 79.4 | 82.0 | 74.9 | 79.9 | 64.6 | 67.4 | 76.3 | 73.7 | -    | 76.3 |
 
 EM scores:
 
-| Model                 | en   | ar   | de   | el   | es   | hi   | ru   | th   | tr   | vi   | zh   | avg  |
-|-----------------------|------|------|------|------|------|------|------|------|------|------|------|------|
-| mBERT                 | 72.2 | 45.1 | 54.0 | 44.9 | 56.9 | 46.0 | 53.3 | 33.5 | 40.1 | 49.6 | 48.3 | 49.4 |
-| XLM-R Large           | 75.7 | 49.0 | 63.4 | 61.7 | 63.9 | 59.7 | 64.3 | 62.8 | 59.3 | 59.0 | 50.0 | 60.8 |
-| Translate-train mBERT | 72.2 | 51.1 | 60.7 | 53.0 | 63.1 | 55.4 | 59.7 | 33.5 | 54.8 | 56.2 | 56.6 | 56.0 |
-| Translate-test BERT-L | 77.1 | 58.8 | 66.7 | 65.5 | 68.4 | 60.1 | 66.7 | 50.0 | 49.6 | 61.5 | 59.1 | 62.1 |
+| Model                 | en   | ar   | de   | el   | es   | hi   | ru   | th   | tr   | vi   | zh   | ro   | avg  |
+|-----------------------|------|------|------|------|------|------|------|------|------|------|------|------|------|
+| mBERT                 | 72.2 | 45.1 | 54.0 | 44.9 | 56.9 | 46.0 | 53.3 | 33.5 | 40.1 | 49.6 | 48.3 | 59.9 | 50.3 |
+| XLM-R Large           | 75.7 | 49.0 | 63.4 | 61.7 | 63.9 | 59.7 | 64.3 | 62.8 | 59.3 | 59.0 | 50.0 | 69.7 | 61.5 |
+| Translate-train mBERT | 72.2 | 51.1 | 60.7 | 53.0 | 63.1 | 55.4 | 59.7 | 33.5 | 54.8 | 56.2 | 56.6 | -    | 56.0 |
+| Translate-test BERT-L | 77.1 | 58.8 | 66.7 | 65.5 | 68.4 | 60.1 | 66.7 | 50.0 | 49.6 | 61.5 | 59.1 | -    | 62.1 |
 
 ## Best practices
 
@@ -112,6 +115,8 @@ If you use this dataset, please cite [[1]](https://arxiv.org/abs/1910.11856):
       eprint    = {1910.11856}
 }
 ```
+
+The Romanian version of this data is part of [LiRo](https://eemlcommunity.github.io/ro_benchmark_leaderboard/), a benchmark for Romanian natural language understanding tasks. This page will be updated with a reference.
 
 ## License
 
