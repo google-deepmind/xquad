@@ -116,7 +116,7 @@ If you use this dataset, please cite [[1]](https://arxiv.org/abs/1910.11856):
 }
 ```
 
-The Romanian version of this data is part of [LiRo](https://eemlcommunity.github.io/ro_benchmark_leaderboard/), a benchmark for Romanian natural language understanding tasks. This page will be updated with a reference.
+The Romanian version of this data is part of [LiRo](https://lirobenchmark.github.io/), a benchmark for Romanian natural language understanding tasks. This page will be updated with a reference.
 
 ## License
 
